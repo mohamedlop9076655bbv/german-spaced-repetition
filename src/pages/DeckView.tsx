@@ -64,7 +64,7 @@ export const DeckView: React.FC = () => {
 
     setGenerating(true);
     try {
-      const cardData = await generateCardData(word, 'German');
+      const cardData = await generateCardData(word);
 
       const { error } = await supabase.from('cards').insert([{
         deck_id: deckId,

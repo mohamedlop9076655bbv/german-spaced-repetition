@@ -3,7 +3,7 @@ import { GoogleGenAI } from '@google/genai';
 // Initialize the new SDK using the key from .env
 const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY || '' });
 
-export const generateCardData = async (word: string, targetLanguage: string) => {
+export const generateCardData = async (word: string) => {
   const prompt = `You are a German language teacher. The user wants to learn the German word "${word}".
   1. Write a clear German context sentence explaining or using the word.
   2. Provide a short, simple German definition or synonym (explanation).
