@@ -32,6 +32,26 @@ export const Login: React.FC = () => {
     }
   };
 
+  const handleResetPassword = async () => {
+    if (!email) {
+      setError('Please enter your email address first.');
+      return;
+    }
+    setLoading(true);
+    setError(null);
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: window.location.origin + '/update-password',
+      });
+      if (error) throw error;
+      alert('Password reset link sent to your email!');
+    } catch (err: any) {
+      setError(err.message || 'Failed to send reset link.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4">
       <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
@@ -65,6 +85,17 @@ export const Login: React.FC = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            {isLogin && (
+              <div className="flex justify-end mt-1">
+                <button
+                  type="button"
+                  onClick={handleResetPassword}
+                  className="text-sm text-blue-600 hover:text-blue-500 dark:text-blue-400"
+                >
+                  Forgot Password?
+                </button>
+              </div>
+            )}
           </div>
           
           <button

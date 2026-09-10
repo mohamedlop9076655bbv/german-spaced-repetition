@@ -5,6 +5,7 @@ import { Login } from './pages/Login';
 import { Dashboard } from './pages/Dashboard';
 import { DeckView } from './pages/DeckView';
 import { Review } from './pages/Review';
+import { UpdatePassword } from './pages/UpdatePassword';
 import { NotificationTracker } from './components/NotificationTracker';
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -22,6 +23,7 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
+      <Route path="/update-password" element={<UpdatePassword />} />
       <Route 
         path="/" 
         element={
