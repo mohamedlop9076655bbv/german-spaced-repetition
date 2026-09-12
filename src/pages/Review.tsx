@@ -172,26 +172,19 @@ export const Review: React.FC = () => {
       
       {/* Top Bar */}
       <div className="w-full max-w-2xl flex items-center justify-between mb-4">
-        {/* Back button - goes to previous card */}
+        {/* Back to Deck button */}
         <button
-          onClick={handlePreviousCard}
-          disabled={currentIndex === 0}
-          className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          onClick={() => navigate(`/deck/${deckId}`)}
+          className="flex items-center gap-1 text-sm text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium"
         >
-          <ArrowLeft size={16} /> Previous
+          <ArrowLeft size={16} /> Back to Deck
         </button>
 
         <span className="text-sm text-gray-500 font-medium">
           Card {currentIndex + 1} of {cards.length}
         </span>
 
-        {/* Exit review */}
-        <button
-          onClick={() => navigate(`/deck/${deckId}`)}
-          className="flex items-center gap-1 text-sm text-gray-500 hover:text-red-500 transition-colors"
-        >
-          Exit <X size={16} />
-        </button>
+        <div className="w-24" />
       </div>
 
       {/* Card */}
